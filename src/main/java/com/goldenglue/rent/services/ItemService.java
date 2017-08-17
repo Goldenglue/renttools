@@ -22,8 +22,4 @@ public class ItemService {
     public void insertItem(Item item) {
         itemRepository.save(item);
     }
-
-    public void deleteItem(Long id) {
-        itemRepository.delete(id);
-    }
 }

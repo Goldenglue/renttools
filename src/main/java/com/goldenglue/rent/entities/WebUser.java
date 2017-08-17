@@ -2,28 +2,31 @@ package com.goldenglue.rent.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class User {
+public class WebUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private long id;
-
     private String username;
+
     @JsonIgnore
     private String password;
-    private String email;
+    @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    private List<Role> roles;
 
-    private List<Item> items;
-
-    User() {
+    WebUser() {
 
     }
+
+    public WebUser(String username, String password, List<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
 
     public long getId() {
         return id;
@@ -49,30 +52,22 @@ public class User {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
     public String toString() {
-        return "User{" +
+        return "WebUser{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", items=" + items +
+                ", roles=" + roles +
                 '}';
     }
 }
