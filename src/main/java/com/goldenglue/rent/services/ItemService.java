@@ -22,7 +22,7 @@ public class ItemService {
         return itemRepository.findByOwnerAndId(user, id);
     }
 
-    public void insertItem(Item item) {
+    public void insert(Item item) {
         itemRepository.save(item);
     }
 }

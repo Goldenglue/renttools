@@ -25,8 +25,9 @@ public class RentApplication {
 
     @Autowired
     public void authenticationManager(AuthenticationManagerBuilder builder, UserRepository repository, UserService userService) throws Exception {
-        if (repository.count() == 0)
-            userService.addNewUser(new User("admin","admin", Arrays.asList(new Role("USER"), new Role("ACTUATOR"), new Role("ADMIN"))));
+        if (repository.count() == 0) {
+            userService.addNewUser(new User("admin", "admin", Arrays.asList(new Role("USER"), new Role("ACTUATOR"), new Role("ADMIN"))));
+        }
         builder.userDetailsService(userDetailsService(repository)).passwordEncoder(passwordEncoder);
     }
 
