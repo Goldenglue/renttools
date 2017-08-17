@@ -14,7 +14,7 @@ public class Item {
     private String name;
     private String description;
     @ManyToOne
-    private WebUser owner;
+    private User owner;
 
 
     Item() {
@@ -45,11 +45,21 @@ public class Item {
         this.description = description;
     }
 
-    public WebUser getOwner() {
+    public User getOwner() {
         return owner;
     }
 
-    public void setOwner(WebUser owner) {
+    public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", owner=" + owner +
+                '}';
     }
 }

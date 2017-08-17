@@ -2,7 +2,7 @@ package com.goldenglue.rent.configs;
 
 
 import com.goldenglue.rent.entities.Role;
-import com.goldenglue.rent.entities.WebUser;
+import com.goldenglue.rent.entities.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +17,7 @@ public class CustomUserDetails implements UserDetails {
     private String password;
     private String username;
 
-    public CustomUserDetails(WebUser user) {
+    public CustomUserDetails(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.authorities = translate(user.getRoles());

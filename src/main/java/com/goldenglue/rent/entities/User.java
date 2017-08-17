@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class WebUser {
+@Table(name = "web_user")
+public class User {
     @Id
     @GeneratedValue
     private long id;
@@ -17,11 +18,11 @@ public class WebUser {
     @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     private List<Role> roles;
 
-    WebUser() {
+    User() {
 
     }
 
-    public WebUser(String username, String password, List<Role> roles) {
+    public User(String username, String password, List<Role> roles) {
         this.username = username;
         this.password = password;
         this.roles = roles;
@@ -63,7 +64,7 @@ public class WebUser {
 
     @Override
     public String toString() {
-        return "WebUser{" +
+        return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +

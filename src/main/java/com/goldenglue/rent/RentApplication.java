@@ -2,9 +2,9 @@ package com.goldenglue.rent;
 
 import com.goldenglue.rent.configs.CustomUserDetails;
 import com.goldenglue.rent.entities.Role;
-import com.goldenglue.rent.entities.WebUser;
+import com.goldenglue.rent.entities.User;
 import com.goldenglue.rent.repositories.UserRepository;
-import com.goldenglue.rent.services.WebUserService;
+import com.goldenglue.rent.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,9 +24,9 @@ public class RentApplication {
     }
 
     @Autowired
-    public void authenticationManager(AuthenticationManagerBuilder builder, UserRepository repository, WebUserService userService) throws Exception {
+    public void authenticationManager(AuthenticationManagerBuilder builder, UserRepository repository, UserService userService) throws Exception {
         if (repository.count() == 0)
-            userService.addNewUser(new WebUser("admin", passwordEncoder.encode("adminPassword"), Arrays.asList(new Role("USER"), new Role("ACTUATOR"), new Role("ADMIN"))));
+            userService.addNewUser(new User("admin","admin", Arrays.asList(new Role("USER"), new Role("ACTUATOR"), new Role("ADMIN"))));
         builder.userDetailsService(userDetailsService(repository)).passwordEncoder(passwordEncoder);
     }
 
