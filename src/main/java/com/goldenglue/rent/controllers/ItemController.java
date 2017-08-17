@@ -22,19 +22,19 @@ public class ItemController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/user/items")
+    @GetMapping(value = "/user/items")
     public List<Item> getItemsByUser() {
         CustomUserDetails userDetails = ((CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         User user = userService.getUser(userDetails.getUsername());
         return itemService.findAllByOwner(user);
     }
 
-    @GetMapping("/user/items/{id}")
+    @GetMapping(value = "/user/items/{id}")
     public Item getItemById(@RequestBody User user, Long id) {
         return itemService.findByOwnerAndId(user, id);
     }
 
-    @PostMapping("/user/items")
+    @PostMapping(value = "/user/items")
     public String addItem(@RequestBody Item item) {
         CustomUserDetails userDetails = ((CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         item.setOwner(userService.getUser(userDetails.getUsername()));
