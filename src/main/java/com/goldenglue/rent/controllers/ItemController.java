@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ItemController {
     @Autowired
-    ItemService itemService;
+    private ItemService itemService;
 
     @GetMapping("/itemId")
     public Item getItemById(@RequestParam Long id) {

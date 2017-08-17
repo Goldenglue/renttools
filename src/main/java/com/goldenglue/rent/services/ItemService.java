@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class ItemService {
 
     @Autowired
-    ItemRepository itemRepository;
+    private ItemRepository itemRepository;
 
     public Item findItemById(Long id) {
         return itemRepository.findOne(id);
@@ -21,5 +21,9 @@ public class ItemService {
 
     public void insertItem(Item item) {
         itemRepository.save(item);
+    }
+
+    public void deleteItem(Long id) {
+        itemRepository.delete(id);
     }
 }
