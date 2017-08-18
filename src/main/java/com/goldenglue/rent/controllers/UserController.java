@@ -20,13 +20,16 @@ public class UserController {
 
     @PostMapping(value = "/registration")
     public String registration(@RequestBody UserRegistration userRegistration) {
+        System.out.println("username " + userRegistration.getUsername());
+        System.out.println("password " + userRegistration.getPassword());
+        System.out.println("password confirm " + userRegistration.getPasswordConfirmation());
         if (!userRegistration.getPassword().equals(userRegistration.getPasswordConfirmation())) {
-            return "Passwords did not match";
+            return "registration";
         } else if (userService.getUser(userRegistration.getUsername()) != null) {
-            return "User already exists";
+            return "registration";
         }
 
         userService.addNewUser(new User(userRegistration.getUsername(), userRegistration.getPassword(), Arrays.asList(new Role("USER"))));
-        return "User created";
+        return "index";
     }
 }

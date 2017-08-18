@@ -1,0 +1,7 @@
+{
+  "name": "rent",
+  "version": "0.0.1",
+  "dependencies": {
+    "vue": "latest"
+  }
+}

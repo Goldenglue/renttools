@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Registration</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css"/>
     <link rel="stylesheet" href="../static/css/style.css"/>
     <script src="https://vuejs.org/js/vue.js"></script>
@@ -14,7 +14,7 @@
 <body>
 <div id="root" class="registration">
     <div class="container">
-        <form>
+        <form >
             <div class="form-group">
                 <label class="control-label col-sm-10" for="username">Email:</label>
                 <div class="col-sm-12">
@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
                 <div class=" col-sm-12">
-                    <button v-on:click="register" class="btn btn-primary btn-block">Register</button>
+                    <button type="submit" v-on:click="register" class="btn btn-primary btn-block">Register</button>
                 </div>
             </div>
         </form>
@@ -47,27 +47,26 @@
     var app = new Vue({
         el: '#root',
         mounted() {
-            Event.$on('logged-in', function () {
+            Event.$on('logged-in',function(){
                 window.location.replace("/");
             })
         },
-        data: {
+        data:{
             username: '',
             password: '',
             passwordConfirm: ''
         },
         methods: {
-            register() {
-                if (this.password !== this.passwordConfirm) {
+            register(){
+                if(this.password !== this.passwordConfirm){
                     alert("Passwords do not match");
                     return;
                 }
-                console.log(this.username);
                 axios({
-                    method: 'post',
-                    url: 'registration',
-                    data: {username: this.username, password: this.password, passwordConfirmation: this.passwordConfirm}
-                }).then(function (response) {
+                    method:'post',
+                    url:'registration',
+                    data:{username:this.username,password:this.password,passwordConfirmation:this.passwordConfirm}
+                }).then(function(response){
                     document.location.replace("/");
                 });
             }

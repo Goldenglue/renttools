@@ -1,0 +1,13 @@
+.home {
+    text-align: center;
+    margin: 18rem auto 0;
+}
+.login ,
+.registration {
+    margin-top: 18rem;
+}
+#mainPageText {
+    font-size: 34px;
+    font-family: 'Open Sans',fantasy;
+    color: #20afbf;
+}

@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Rent tools</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="../static/css/style.css"/>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 </head>
 <body>
-<h1>The boys</h1>
+<div id="root" class="home">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <p id="mainPageText" >Track your rent, anywhere, at any time. Get statistics, notify renters.</p>
+            </div>
+            <div class="col-4 btn-group-vertical">
+                <a href="/login" class="btn btn-info">Log in</a>
+                <a href="/registration" class="btn btn-info">Register</a>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
