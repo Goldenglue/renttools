@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+@Entity()
 @Table(name = "web_user")
 public class User {
     @Id
@@ -15,11 +15,10 @@ public class User {
 
     @JsonIgnore
     private String password;
-    @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Role> roles;
 
     User() {
-
     }
 
     public User(String username, String password, List<Role> roles) {

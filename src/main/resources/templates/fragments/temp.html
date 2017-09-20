@@ -1,76 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Registration</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/style.css"/>
-    <link rel="stylesheet" href="../static/css/style.css"/>
-    <script src="https://vuejs.org/js/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue"></script>
+    <title>Display dates</title>
 </head>
 <body>
-<div id="root" class="registration">
-    <div class="container">
-        <form >
-            <div class="form-group">
-                <label class="control-label col-sm-10" for="username">Email:</label>
-                <div class="col-sm-12">
-                    <input v-model="username" type="text" class="form-control" id="username" placeholder="Enter email"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-10" for="password">Password:</label>
-                <div class="col-sm-12">
-                    <input v-model="password" type="password" class="form-control" id="password" placeholder="Enter password"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-10" for="passwordConfirm">Password confirmation:</label>
-                <div class="col-sm-12">
-                    <input v-model="passwordConfirm" type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class=" col-sm-12">
-                    <button type="submit" v-on:click="register" class="btn btn-primary btn-block">Register</button>
-                </div>
-            </div>
-        </form>
-    </div>
+<div id="app">
+    <ul>
+        <!-- This should be displayed if the age is lower than 18 -->
+        <li v-if="age < 18">I am a minor</li>
+        <!-- This should be displayed if the age is greater of equal than 18 -->
+        <li v-if="age <= 18">I am an adult</li>
+        <!-- When the button is clicked, the method `displayAlert` must be called -->
+        <li v-on:click="displayAlert"><button>Click on me!</button></li>
+        <!-- The span must have the class which name is equal to the value of colorClass (from the instance's data) -->
+        <li>The following element has the class {{ colorClass }}: <span>Hello</span></li>
+        <!-- The content of the span should be the same as the variable htmlContent but the HTML must be interpreted -->
+        <li>The following element has its HTML content injected: <span></span></li>
+    </ul>
 </div>
 
-</body>
-<script>
-    var app = new Vue({
-        el: '#root',
-        mounted() {
-            Event.$on('logged-in',function(){
-                window.location.replace("/");
-            })
+<script >
+    new Vue({
+        el: '#app',
+        data: { // You shouldn't change the "data" part
+            message: 'Hello',
+            age: '18',
+            htmlContent: 'I am <strong>strong !</strong>',
+            colorClass: 'red'
         },
-        data:{
-            username: '',
-            password: '',
-            passwordConfirm: ''
-        },
-        methods: {
-            register(){
-                if(this.password !== this.passwordConfirm){
-                    alert("Passwords do not match");
-                    return;
-                }
-                axios({
-                    method:'post',
-                    url:'registration',
-                    data:{username:this.username,password:this.password,passwordConfirmation:this.passwordConfirm}
-                }).then(function(response){
-                    document.location.replace("/");
-                });
+        methods: { // You shouldn't change the "methods" part
+            displayAlert () {
+                window.alert(this.message)
             }
         }
-    });
+    })
+
 </script>
+</body>
 </html>

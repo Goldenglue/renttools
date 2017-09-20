@@ -20,6 +20,7 @@ public class RentApplication {
     private PasswordEncoder passwordEncoder;
 
     public static void main(String[] args) {
+
         SpringApplication.run(RentApplication.class, args);
     }
 
